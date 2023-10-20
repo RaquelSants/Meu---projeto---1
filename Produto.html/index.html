@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    <link rel="stylesheet" type="text/css" href="projeto.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><a href="#">Garota no Topo</a></h1>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobrenos">Sobre Nós</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+
+        <div id="home" class="pagina">
+            <h2>Página Inicial</h2>
+            <p>Bem-Vindo à página Inicial</p>
+        </div>
+
+        <div id="sobrenos" class="pagina">
+            <h2>Sobre Nós</h2>
+            <p>Saiba mais sobre nossa empresa.</p>
+        </div>
+
+        <div id="login" class="pagina">
+            <h2>Login</h2>
+            <p>Faça login na sua conta.</p>
+            <button id="openModalButton">Abrir Modal</button>
+        </div>
+
+        <div id="loginModal" class="modal modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <span class="close" id="closeModalButton">&times;</span>
+                    <h2>Login</h2>
+                    <p>Insira suas credenciais de login</p>
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Aluna</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Cadastro</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <nav class="navbar bg-body-tertiary">
+                                <form class="container-fluid">
+                                  <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">Nome de usuário</span>
+                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
+
+                                  <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">Senha</span>
+                                    <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
+                                  
+                                </form>
+                              </nav>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="contato" class="pagina">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco.</p>
+        </div>
+    </header>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".menu a");
+    const pages = document.querySelectorAll(".pagina");
+
+    menuItems.forEach(function (item) {
+        item.addEventListener("click", function (event) {
+            event.preventDefault();
+            const targetId = item.getAttribute("href").substr(1);
+            showPage(targetId);
+        });
+    });
+
+    function showPage(pageId) {
+        pages.forEach(function (page) {
+            page.style.display = "none";
+        });
+        document.getElementById(pageId).style.display = "block";
+    }
+
+    showPage("home");
+});
+</script>
+<script>
+const openModalButton = document.getElementById("openModalButton");
+const closeModalButton = document.getElementById("closeModalButton");
+const loginModal = document.getElementById("loginModal");
+
+openModalButton.addEventListener("click", () => {
+    loginModal.style.display = "block";
+});
+
+closeModalButton.addEventListener("click", () => {
+    loginModal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+    if (event.target === loginModal) {
+        loginModal.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>
+
